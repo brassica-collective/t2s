@@ -4,6 +4,14 @@ class FboAccountStatementsController < ApplicationController
   def index
   end
 
+  def new
+    @statement = FboAccountStatement.new
+  end
+
+  def create
+    @statement = FboAccountStatement.new
+  end
+
   private
 
   def load_account

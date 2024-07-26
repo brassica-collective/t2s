@@ -1,0 +1,2 @@
+class FboAccountStatement < ApplicationRecord
+end

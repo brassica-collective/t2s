@@ -1,0 +1,12 @@
+<article>
+  <h1>New FBO Account Statement</h1>
+  <%= form_with model: @statement do |form| %>
+    <p>
+      <%= form.label :file, "Upload file" %>
+      <%= form.file_field :file %>
+    </p>
+    <p>
+      <%= form.submit "Submit" %>
+    </p>
+  <% end %>
+</article>

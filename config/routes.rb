@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :fbo_accounts, only: [:index, :show] do
-    resources :fbo_account_statements, as: :statements, path: :statements, only: [:index]
+    resources :fbo_account_statements, as: :statements, path: :statements, only: [:index, :new, :create]
   end
 
   # Defines the root path route ("/")
