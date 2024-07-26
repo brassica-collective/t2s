@@ -1,0 +1,10 @@
+<article>
+  <h1>FBO Account: <%= @account.name %></h1>
+  <nav>
+    <ul>
+      <li>
+        <%= link_to "Statements", fbo_account_statements_path(@account) %>
+      </li>
+    </ul>
+  </nav>
+</article>
