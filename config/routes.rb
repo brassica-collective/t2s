@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :fbo_accounts, only: [:index, :show]
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "fbo_accounts#index"
 end

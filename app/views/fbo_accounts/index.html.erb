@@ -1,6 +1,8 @@
 <article>
   <h1>FBO Accounts</h1>
   <ul>
-    <li>XXX</li>
+    <% @accounts.map do |account| %>
+      <li><%= link_to account.name, account %></li>
+    <% end %>
   </ul>
 </article>
