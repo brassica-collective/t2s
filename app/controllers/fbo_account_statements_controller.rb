@@ -9,12 +9,21 @@ class FboAccountStatementsController < ApplicationController
   end
 
   def create
-    @statement = FboAccountStatement.new
+    @statement = FboAccountStatement.new(create_params)
+    if @statement.save
+      redirect_to action: :index
+    else
+      render action: :new
+    end
   end
 
   private
 
   def load_account
     @account = FboAccount.find params[:fbo_account_id]
+  end
+
+  def create_params
+    params.require(:fbo_account_statement).permit(:file)
   end
 end

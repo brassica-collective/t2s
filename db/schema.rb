@@ -15,6 +15,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_042200) do
   enable_extension "plpgsql"
 
   create_table "fbo_account_statements", force: :cascade do |t|
+    t.string "original_filename"
+    t.text "file_contents"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
