@@ -17,8 +17,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_042200) do
   create_table "fbo_account_statements", force: :cascade do |t|
     t.string "original_filename"
     t.text "file_contents"
+    t.bigint "fbo_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["fbo_account_id"], name: "index_fbo_account_statements_on_fbo_account_id"
   end
 
   create_table "fbo_accounts", force: :cascade do |t|

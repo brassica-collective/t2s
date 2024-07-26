@@ -7,4 +7,25 @@
       </li>
     </ul>
   </nav>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Filename</th>
+        <th>Uploaded</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @statements.each do |statement| %>
+        <td><%= statement.id %></td>
+        <td><%= statement.original_filename %></td>
+        <td><%= statement.created_at.to_s %></td>
+      <% end %>
+    </tbody>
+  </table>
+
+  <ul>
+
+  </ul>
 </article>

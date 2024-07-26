@@ -2,6 +2,7 @@ class FboAccountStatementsController < ApplicationController
   before_action :load_account
 
   def index
+    @statements = @account.statements
   end
 
   def new
@@ -9,10 +10,11 @@ class FboAccountStatementsController < ApplicationController
   end
 
   def create
-    @statement = FboAccountStatement.new(create_params)
+    @statement = @account.statements.build(create_params)
     if @statement.save
       redirect_to action: :index
     else
+      raise @statement.errors.inspect
       render action: :new
     end
   end

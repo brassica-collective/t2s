@@ -1,4 +1,6 @@
 class FboAccountStatement < ApplicationRecord
+  belongs_to :fbo_account
+
   validates :original_filename, presence: true, on: :create
   validates :file_contents, presence: true, on: :create
 
