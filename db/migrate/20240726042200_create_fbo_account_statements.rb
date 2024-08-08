@@ -5,6 +5,7 @@ class CreateFboAccountStatements < ActiveRecord::Migration[7.1]
       t.text :file_contents
       t.belongs_to :fbo_account
       t.datetime :imported_at
+      t.string :format
       t.timestamps
     end
   end

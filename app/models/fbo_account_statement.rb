@@ -1,8 +1,11 @@
 class FboAccountStatement < ApplicationRecord
   belongs_to :fbo_account
 
+  VALID_FORMATS = ['ofx'].freeze
+
   validates :original_filename, presence: true, on: :create
   validates :file_contents, presence: true, on: :create
+  validates :format, inclusion: { in: VALID_FORMATS }, allow_nil: true
 
   def file=(value)
     return if value.nil?
@@ -14,5 +17,11 @@ class FboAccountStatement < ApplicationRecord
   def import!
     # Import the statement contents here
     update! imported_at: Time.current
+  end
+
+  private
+
+  before_validation on: :create do
+    self.format = File.extname(original_filename).delete('.')
   end
 end

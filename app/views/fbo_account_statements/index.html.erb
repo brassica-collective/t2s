@@ -14,6 +14,7 @@
         <th>ID</th>
         <th>Filename</th>
         <th>Uploaded</th>
+        <th>Format</th>
         <th>Imported</th>
         <th>Actions</th>
       </tr>
@@ -23,7 +24,8 @@
         <td><%= statement.id %></td>
         <td><%= statement.original_filename %></td>
         <td><%= statement.created_at.to_formatted_s(:short) %></td>
-        <td><%= statement.imported_at.to_formatted_s(:short) %></td>
+        <td><%= statement.format %></td>
+        <td><%= statement.imported_at&.to_formatted_s(:short) %></td>
         <td><%= button_to "import", import_fbo_account_statement_path(@account, statement) %></td>
       <% end %>
     </tbody>

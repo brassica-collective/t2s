@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_07_235352) do
     t.text "file_contents"
     t.bigint "fbo_account_id"
     t.datetime "imported_at"
+    t.string "format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fbo_account_id"], name: "index_fbo_account_statements_on_fbo_account_id"
