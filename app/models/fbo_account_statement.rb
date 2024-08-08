@@ -10,4 +10,9 @@ class FboAccountStatement < ApplicationRecord
     self.original_filename = value.original_filename
     self.file_contents = value.read
   end
+
+  def import!
+    # Import the statement contents here
+    update! imported_at: Time.current
+  end
 end

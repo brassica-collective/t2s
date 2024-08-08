@@ -19,7 +19,17 @@ class FboAccountStatementsController < ApplicationController
     end
   end
 
+  def import
+    load_statement
+    @statement.import!
+    redirect_to action: :index
+  end
+
   private
+
+  def load_statement
+    @statement = @account.statements.find params[:id]
+  end
 
   def load_account
     @account = FboAccount.find params[:fbo_account_id]
