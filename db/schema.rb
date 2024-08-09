@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_07_235352) do
   create_table "fbo_account_transactions", force: :cascade do |t|
     t.bigint "fbo_account_id"
     t.bigint "fbo_account_statement_id"
-    t.date "posted_on"
+    t.datetime "posted_at"
     t.integer "amount_cents"
     t.string "memo"
     t.integer "index_in_statement"

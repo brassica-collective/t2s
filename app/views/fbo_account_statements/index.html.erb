@@ -2,9 +2,8 @@
   <h1>FBO Account Statements: <%= @account.name %></h1>
   <nav>
     <ul>
-      <li>
-        <%= link_to "New", new_fbo_account_statement_path(@account) %>
-      </li>
+      <li><%= link_to "< back to Account", fbo_account_path(@account) %></li>
+      <li><%= link_to "New", new_fbo_account_statement_path(@account) %></li>
     </ul>
   </nav>
 
@@ -30,8 +29,4 @@
       <% end %>
     </tbody>
   </table>
-
-  <ul>
-
-  </ul>
 </article>

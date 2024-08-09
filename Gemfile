@@ -43,9 +43,9 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'bigdecimal', '1.3.5' # For ofx
-gem "nkf" # For ofx
-gem "ofx"
+gem "ofx", git: "https://github.com/JoeDupuis/ofx"
+
+gem "money", "~> 6.19.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

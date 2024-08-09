@@ -1,5 +1,6 @@
 class FboAccountStatement < ApplicationRecord
   belongs_to :fbo_account
+  has_many :transactions, class_name: 'FboAccountTransaction', dependent: :destroy
 
   VALID_FORMATS = ['ofx'].freeze
 

@@ -7,4 +7,22 @@
       </li>
     </ul>
   </nav>
+  <h2>Transactions</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Memo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @account.transactions.each do |transaction| %>
+        <tr>
+          <td><%= transaction.posted_at %></td>
+          <td><%= number_to_currency(transaction.amount_cents) %></td>
+          <td><%= transaction.memo %></td>
+        </tr>
+      <% end %>
+    </tbody>
 </article>
