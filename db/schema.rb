@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_07_235352) do
 
   create_table "fbo_accounts", force: :cascade do |t|
     t.string "name"
+    t.string "bank_account_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

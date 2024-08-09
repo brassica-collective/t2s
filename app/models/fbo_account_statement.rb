@@ -15,7 +15,7 @@ class FboAccountStatement < ApplicationRecord
   end
 
   def import!
-    # Import the statement contents here
+    Importers.for(format).new.import(file_contents, self)
     update! imported_at: Time.current
   end
 
