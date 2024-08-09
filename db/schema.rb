@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_07_235352) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_09_102524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "fbo_account_statements", force: :cascade do |t|
     t.string "original_filename"
     t.text "file_contents"
-    t.bigint "fbo_account_id"
+    t.bigint "fbo_account_id", null: false
     t.datetime "imported_at"
     t.string "format"
     t.datetime "created_at", null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_07_235352) do
   end
 
   create_table "fbo_account_transactions", force: :cascade do |t|
-    t.bigint "fbo_account_id"
+    t.bigint "fbo_account_id", null: false
     t.bigint "fbo_account_statement_id"
     t.datetime "posted_at"
     t.integer "amount_cents"
@@ -45,4 +45,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_07_235352) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "te_schemes", force: :cascade do |t|
+    t.string "name"
+    t.bigint "fbo_account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fbo_account_id"], name: "index_te_schemes_on_fbo_account_id"
+  end
+
+  add_foreign_key "fbo_account_statements", "fbo_accounts"
+  add_foreign_key "fbo_account_transactions", "fbo_account_statements"
+  add_foreign_key "fbo_account_transactions", "fbo_accounts"
+  add_foreign_key "te_schemes", "fbo_accounts"
 end
