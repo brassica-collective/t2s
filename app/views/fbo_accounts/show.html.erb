@@ -2,7 +2,7 @@
   <h1>FBO Account: <%= @account.name %></h1>
   <nav>
     <ul>
-      <li><%= link_to "< all accounts", fbo_accounts_path %></li>
+      <li><%= link_to "< home", root_path %></li>
       <li><%= link_to "Statements", fbo_account_statements_path(@account) %></li>
     </ul>
   </nav>
@@ -13,6 +13,7 @@
         <th>Date</th>
         <th>Amount</th>
         <th>Memo</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +22,9 @@
           <td><%= transaction.posted_at.to_date.to_formatted_s(:short) %></td>
           <td class="money"><%= number_to_currency(transaction.amount) %></td>
           <td><%= transaction.memo %></td>
+          <td>
+            <%= link_to("Edit", "#") if transaction.money_in? %>
+          </td>
         </tr>
       <% end %>
     </tbody>

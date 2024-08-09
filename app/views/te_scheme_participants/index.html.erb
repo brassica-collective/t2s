@@ -1,0 +1,9 @@
+<article>
+  <h1>TE Scheme Participants: <%= @scheme.name %></h1>
+  <nav>
+    <ul>
+      <li><%= link_to "< back to Scheme", @scheme %></li>
+      <li><%= link_to "New", new_te_scheme_participant_path(@scheme) %></li>
+    </ul>
+  </nav>
+</article>

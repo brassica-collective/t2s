@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :te_schemes, only: [:show] do
+    resources :te_scheme_participants, as: :participants, path: :participants, only: [:index, :new, :create]
+  end
+
   # Defines the root path route ("/")
-  root "fbo_accounts#index"
+  root "home#index"
 end

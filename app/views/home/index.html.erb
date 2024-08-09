@@ -1,0 +1,15 @@
+<article>
+  <h1>T2S</h1>
+  <h2>FBO Accounts</h2>
+  <ul>
+    <% @accounts.map do |account| %>
+      <li><%= link_to account.name, account %></li>
+    <% end %>
+  </ul>
+  <h2>TE Schemes</h2>
+  <ul>
+    <% @schemes.map do |scheme| %>
+      <li><%= link_to scheme.name, scheme %></li>
+    <% end %>
+  </ul>
+</article>

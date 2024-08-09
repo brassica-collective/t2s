@@ -5,4 +5,12 @@ class FboAccountTransaction < ApplicationRecord
   def amount
     Money.from_cents(amount_cents, "AUD")
   end
+
+  def money_in?
+    amount_cents > 0
+  end
+
+  def money_out?
+    amount_cents < 0
+  end
 end

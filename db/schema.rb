@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_09_102524) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_09_105059) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_102524) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "te_scheme_participants", force: :cascade do |t|
+    t.bigint "te_scheme_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["te_scheme_id"], name: "index_te_scheme_participants_on_te_scheme_id"
+  end
+
   create_table "te_schemes", force: :cascade do |t|
     t.string "name"
     t.bigint "fbo_account_id", null: false
@@ -56,5 +64,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_102524) do
   add_foreign_key "fbo_account_statements", "fbo_accounts"
   add_foreign_key "fbo_account_transactions", "fbo_account_statements"
   add_foreign_key "fbo_account_transactions", "fbo_accounts"
+  add_foreign_key "te_scheme_participants", "te_schemes"
   add_foreign_key "te_schemes", "fbo_accounts"
 end
