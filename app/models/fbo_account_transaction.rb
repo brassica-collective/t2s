@@ -13,4 +13,9 @@ class FboAccountTransaction < ApplicationRecord
   def money_out?
     amount_cents < 0
   end
+
+  def assign_to_participant!(participant)
+    raise "Assigning to participant: #{participant.inspect}"
+    # update!(participant: participant)
+  end
 end

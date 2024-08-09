@@ -6,4 +6,18 @@
       <li><%= link_to "New", new_te_scheme_participant_path(@scheme) %></li>
     </ul>
   </nav>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @participants.each do |participant| %>
+        <tr>
+          <td><%= participant.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </article>

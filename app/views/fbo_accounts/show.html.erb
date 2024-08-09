@@ -13,7 +13,7 @@
         <th>Date</th>
         <th>Amount</th>
         <th>Memo</th>
-        <th>Actions</th>
+        <th>Participant</th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +23,12 @@
           <td class="money"><%= number_to_currency(transaction.amount) %></td>
           <td><%= transaction.memo %></td>
           <td>
-            <%= link_to("Edit", "#") if transaction.money_in? %>
+            <% if transaction.money_in? %>
+              <%= form_with url: assign_fbo_account_transaction_path(@account, transaction) do |form| %>
+                <%= form.select('participant_id', options_from_collection_for_select(@scheme.participants, 'id', 'name', nil), include_blank: true)  %>
+                <%= form.submit "Assign" %>
+              <% end %>
+            <% end %>
           </td>
         </tr>
       <% end %>

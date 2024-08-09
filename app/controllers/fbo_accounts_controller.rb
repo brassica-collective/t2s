@@ -5,5 +5,6 @@ class FboAccountsController < ApplicationController
 
   def show
     @account = FboAccount.find(params[:id])
+    @scheme = @account.te_scheme
   end
 end

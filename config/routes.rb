@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :fbo_account_statements, as: :statements, path: :statements, only: [:index, :new, :create] do
       post :import, on: :member
     end
+    resources :fbo_account_transactions, as: :transactions, path: :transactions, only: [] do
+      post :assign, on: :member
+    end
   end
 
   resources :te_schemes, only: [:show] do
