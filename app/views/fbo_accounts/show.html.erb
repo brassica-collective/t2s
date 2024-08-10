@@ -25,9 +25,13 @@
           <td><%= transaction.memo %></td>
           <td>
             <% if transaction.money_in? %>
-              <%= form_with url: assign_fbo_account_transaction_path(@account, transaction) do |form| %>
-                <%= form.select('participant_id', options_from_collection_for_select(@scheme.participants, 'id', 'name', nil), include_blank: true)  %>
-                <%= form.submit "Assign" %>
+              <% if transaction.te_scheme_contribution %>
+                <%= transaction.te_scheme_contribution.participant.name %>
+              <% else %>
+                <%= form_with url: assign_fbo_account_transaction_path(@account, transaction) do |form| %>
+                  <%= form.select('participant_id', options_from_collection_for_select(@scheme.participants, 'id', 'name', nil), include_blank: true)  %>
+                  <%= form.submit "Assign" %>
+                <% end %>
               <% end %>
             <% end %>
           </td>
