@@ -45,15 +45,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_000705) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "scheme_contributions", force: :cascade do |t|
+  create_table "te_scheme_contributions", force: :cascade do |t|
     t.bigint "fbo_account_transaction_id", null: false
     t.bigint "te_scheme_participant_id", null: false
     t.integer "amount_cents"
     t.datetime "received_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["fbo_account_transaction_id"], name: "index_scheme_contributions_on_fbo_account_transaction_id"
-    t.index ["te_scheme_participant_id"], name: "index_scheme_contributions_on_te_scheme_participant_id"
+    t.index ["fbo_account_transaction_id"], name: "index_te_scheme_contributions_on_fbo_account_transaction_id"
+    t.index ["te_scheme_participant_id"], name: "index_te_scheme_contributions_on_te_scheme_participant_id"
   end
 
   create_table "te_scheme_participants", force: :cascade do |t|
@@ -75,8 +75,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_000705) do
   add_foreign_key "fbo_account_statements", "fbo_accounts"
   add_foreign_key "fbo_account_transactions", "fbo_account_statements"
   add_foreign_key "fbo_account_transactions", "fbo_accounts"
-  add_foreign_key "scheme_contributions", "fbo_account_transactions"
-  add_foreign_key "scheme_contributions", "te_scheme_participants"
+  add_foreign_key "te_scheme_contributions", "fbo_account_transactions"
+  add_foreign_key "te_scheme_contributions", "te_scheme_participants"
   add_foreign_key "te_scheme_participants", "te_schemes"
   add_foreign_key "te_schemes", "fbo_accounts"
 end

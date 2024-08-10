@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :te_schemes, only: [:show] do
     resources :te_scheme_participants, as: :participants, path: :participants, only: [:index, :new, :create]
+    resources :te_scheme_contributions, as: :contributions, path: :contributions, only: [:index]
   end
 
   # Defines the root path route ("/")

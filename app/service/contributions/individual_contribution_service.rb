@@ -12,11 +12,11 @@ class Contributions::IndividualContributionService
   private
 
   def find_existing_contribution(fbo_transaction)
-    fbo_transaction.scheme_contribution
+    fbo_transaction.te_scheme_contribution
   end
 
   def create_contribution(fbo_transaction, participant)
-    SchemeContribution.create!(
+    TeSchemeContribution.create!(
       fbo_account_transaction: fbo_transaction,
       participant: participant,
       amount_cents: fbo_transaction.amount_cents,

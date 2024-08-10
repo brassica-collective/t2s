@@ -1,0 +1,26 @@
+<article>
+  <h1>TE Scheme Contributions: <%= @scheme.name %></h1>
+  <nav>
+    <ul>
+      <li><%= link_to "< back to Scheme", @scheme %></li>
+    </ul>
+  </nav>
+  <table>
+    <thead>
+      <tr>
+        <th>Received</th>
+        <th>Participant</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contributions.each do |contribution| %>
+        <tr>
+          <td><%= contribution.received_at.to_formatted_s(:short) %></td>
+          <td><%= contribution.participant.name %></td>
+          <td class="money"><%= number_to_currency contribution.amount %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</article>
