@@ -1,6 +1,7 @@
 class FboAccountTransaction < ApplicationRecord
   belongs_to :fbo_account_statement
   belongs_to :fbo_account
+  has_one :scheme_contribution
 
   def amount
     Money.from_cents(amount_cents, "AUD")
@@ -12,10 +13,5 @@ class FboAccountTransaction < ApplicationRecord
 
   def money_out?
     amount_cents < 0
-  end
-
-  def assign_to_participant!(participant)
-    raise "Assigning to participant: #{participant.inspect}"
-    # update!(participant: participant)
   end
 end
