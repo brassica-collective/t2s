@@ -3,6 +3,7 @@
   <nav>
     <ul>
       <li><%= link_to "< home", root_path %></li>
+      <li><%= link_to "TE scheme", @account.te_scheme %></li>
       <li><%= link_to "Statements", fbo_account_statements_path(@account) %></li>
     </ul>
   </nav>
