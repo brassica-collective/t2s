@@ -11,6 +11,7 @@
         <th>Received</th>
         <th>Participant</th>
         <th>Amount</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,9 @@
           <td><%= contribution.received_at.to_formatted_s(:short) %></td>
           <td><%= contribution.participant.name %></td>
           <td class="money"><%= number_to_currency contribution.amount %></td>
+          <th>
+            <%= button_to "reaggregate", reaggregate_te_scheme_contribution_path(@scheme, contribution) %>
+          </th>
         </tr>
       <% end %>
     </tbody>

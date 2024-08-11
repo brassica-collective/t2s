@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 gem "ofx", git: "https://github.com/JoeDupuis/ofx"
 
 gem "money", "~> 6.19.0"
+gem 'month', '~> 2.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
