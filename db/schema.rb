@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_011019) do
   create_table "monthly_aggregates", force: :cascade do |t|
     t.bigint "te_scheme_participant_id", null: false
     t.integer "year", null: false
-    t.integer "month", null: false
+    t.integer "month_number", null: false
     t.integer "deposit_total_cents", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

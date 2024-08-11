@@ -8,7 +8,7 @@ class TeSchemeContributionsController < ApplicationController
 
   def reaggregate
     service = Contributions::MonthlyAggregateService.new
-    service.aggregate(@scheme, Month(@contribution.received_at))
+    service.aggregate(@contribution.participant, Month(@contribution.received_at))
   end
 
   private

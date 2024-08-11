@@ -5,6 +5,8 @@ class TeSchemeContribution < ApplicationRecord
   validates :amount_cents, presence: true
   validates :received_at, presence: true
 
+  scope :for_month, ->(month) { where(received_at: month.dates) }
+
   def amount
     Money.from_cents(amount_cents, "AUD")
   end
