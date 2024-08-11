@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_10_000705) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_10_011019) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_000705) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "monthly_aggregates", force: :cascade do |t|
+    t.bigint "te_scheme_participant_id", null: false
+    t.integer "year", null: false
+    t.integer "month", null: false
+    t.integer "deposit_total_cents", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["te_scheme_participant_id"], name: "index_monthly_aggregates_on_te_scheme_participant_id"
+  end
+
   create_table "te_scheme_contributions", force: :cascade do |t|
     t.bigint "fbo_account_transaction_id", null: false
     t.bigint "te_scheme_participant_id", null: false
@@ -75,6 +85,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_000705) do
   add_foreign_key "fbo_account_statements", "fbo_accounts"
   add_foreign_key "fbo_account_transactions", "fbo_account_statements"
   add_foreign_key "fbo_account_transactions", "fbo_accounts"
+  add_foreign_key "monthly_aggregates", "te_scheme_participants"
   add_foreign_key "te_scheme_contributions", "fbo_account_transactions"
   add_foreign_key "te_scheme_contributions", "te_scheme_participants"
   add_foreign_key "te_scheme_participants", "te_schemes"
