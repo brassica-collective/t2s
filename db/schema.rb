@@ -50,6 +50,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_011019) do
     t.integer "year", null: false
     t.integer "month_number", null: false
     t.integer "deposit_total_cents", null: false
+    t.integer "balance_cents", null: false
+    t.integer "demurrage_cents", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["te_scheme_participant_id"], name: "index_monthly_aggregates_on_te_scheme_participant_id"

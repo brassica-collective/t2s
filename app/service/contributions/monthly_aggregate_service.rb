@@ -26,11 +26,23 @@ class Contributions::MonthlyAggregateService
   end
 
   def update_aggregate(participant, month, aggregate)
-    aggregate.deposit_total_cents = compute_deposit_total(participant, month)
+    previous_aggregate = aggregate.previous_aggregate
+
+    aggregate.deposit_total = compute_deposit_total(participant, month)
+    aggregate.balance = compute_balance(aggregate, previous_aggregate)
+    aggregate.demurrage = Money.new(0)
     aggregate.save!
   end
 
   def compute_deposit_total(participant, month)
-    participant.contributions.for_month(month).sum(:amount_cents)
+    Money.new(participant.contributions.for_month(month).sum(:amount_cents))
+  end
+
+  def compute_balance(aggregate, previous_aggregate)
+    previous_balance(previous_aggregate) + aggregate.deposit_total
+  end
+
+  def previous_balance(previous_aggregate)
+    previous_aggregate&.balance || Money.new(0)
   end
 end
