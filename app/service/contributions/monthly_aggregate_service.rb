@@ -2,10 +2,16 @@ class Contributions::MonthlyAggregateService
   def aggregate(participant, month)
     existing = find_existing(participant, month)
     if existing
-      raise "aggregate already exists for #{participant.id} #{month}"
+      update_aggregate(participant, month, existing)
     else
       create_aggregate(participant, month)
     end
+    aggregate_if_necessary(participant, month.next)
+  end
+
+  def aggregate_if_necessary(participant, month)
+    return unless month <= Month.now
+    aggregate(participant, month)
   end
 
   private
@@ -15,9 +21,13 @@ class Contributions::MonthlyAggregateService
   end
 
   def create_aggregate(participant, month)
-    result = participant.monthly_aggregates.build(year: month.year, month_number: month.number)
-    result.deposit_total_cents = compute_deposit_total(participant, month)
-    result.save!
+    aggregate = participant.monthly_aggregates.build(year: month.year, month_number: month.number)
+    update_aggregate(participant, month, aggregate)
+  end
+
+  def update_aggregate(participant, month, aggregate)
+    aggregate.deposit_total_cents = compute_deposit_total(participant, month)
+    aggregate.save!
   end
 
   def compute_deposit_total(participant, month)
