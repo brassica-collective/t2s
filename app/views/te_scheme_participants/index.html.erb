@@ -10,12 +10,14 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Links</th>
       </tr>
     </thead>
     <tbody>
       <% @participants.each do |participant| %>
         <tr>
           <td><%= participant.name %></td>
+          <td><%= link_to "show", te_scheme_participant_path(@scheme, participant) %></td>
         </tr>
       <% end %>
     </tbody>

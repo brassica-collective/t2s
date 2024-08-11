@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :te_schemes, only: [:show] do
-    resources :te_scheme_participants, as: :participants, path: :participants, only: [:index, :new, :create]
+    resources :te_scheme_participants, as: :participants, path: :participants, only: [:index, :new, :create, :show]
     resources :te_scheme_contributions, as: :contributions, path: :contributions, only: [:index] do
       post :reaggregate, on: :member
     end

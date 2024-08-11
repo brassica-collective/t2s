@@ -1,5 +1,6 @@
 class TeSchemeParticipantsController < ApplicationController
   before_action :load_scheme
+  before_action :load_participant, only: [:show]
 
   def index
     @participants = @scheme.participants
@@ -19,6 +20,10 @@ class TeSchemeParticipantsController < ApplicationController
     end
   end
 
+  def show
+    @monthly_aggregates = @participant.monthly_aggregates
+  end
+
   private
 
   def create_params
@@ -27,5 +32,9 @@ class TeSchemeParticipantsController < ApplicationController
 
   def load_scheme
     @scheme = TeScheme.find params[:te_scheme_id]
+  end
+
+  def load_participant
+    @participant = @scheme.participants.find params[:id]
   end
 end

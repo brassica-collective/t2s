@@ -1,0 +1,26 @@
+<article>
+  <h1>Participant: <%= @participant.name %></h1>
+  <nav>
+    <ul>
+      <li><%= link_to "< home", root_path %></li>
+      <li><%= link_to "TE scheme", @scheme %></li>
+    </ul>
+  </nav>
+  <h2>Months</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Deposit Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @monthly_aggregates.each do |ma| %>
+        <tr>
+          <td><%= ma.month %></td>
+          <td class="money"><%= number_to_currency ma.deposit_total %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</article>

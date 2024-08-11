@@ -5,4 +5,8 @@ class MonthlyAggregate < ApplicationRecord
   validates :year, presence: true
   validates :month_number, presence: true, uniqueness: { scope: [:te_scheme_participant_id, :year] }
   validates :deposit_total_cents, presence: true
+
+  def deposit_total
+    Money.from_cents(deposit_total_cents, "AUD")
+  end
 end
