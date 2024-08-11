@@ -29,8 +29,8 @@ class Contributions::MonthlyAggregateService
     previous_aggregate = aggregate.previous_aggregate
 
     aggregate.deposit_total = compute_deposit_total(participant, month)
+    aggregate.demurrage = compute_demurrage(previous_aggregate)
     aggregate.balance = compute_balance(aggregate, previous_aggregate)
-    aggregate.demurrage = Money.new(0)
     aggregate.save!
   end
 
@@ -39,7 +39,15 @@ class Contributions::MonthlyAggregateService
   end
 
   def compute_balance(aggregate, previous_aggregate)
-    previous_balance(previous_aggregate) + aggregate.deposit_total
+    previous_balance(previous_aggregate) + aggregate.deposit_total - aggregate.demurrage
+  end
+
+  def compute_demurrage(previous_aggregate)
+    previous_balance(previous_aggregate) * demurrage_rate
+  end
+
+  def demurrage_rate
+    0.02
   end
 
   def previous_balance(previous_aggregate)
