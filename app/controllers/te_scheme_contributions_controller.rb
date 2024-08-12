@@ -2,14 +2,12 @@ class TeSchemeContributionsController < ApplicationController
   before_action :load_scheme
   before_action :load_contribution, only: [:reaggregate]
 
-  scope :oldest_first, -> { order(received_at: :asc) }
-
   def index
     @contributions = @scheme.contributions
   end
 
   def reaggregate
-    service = Contributions::MonthlyAggregateService.new
+    service = Te::ContributionAggregateService.new
     service.aggregate(@contribution.participant, Month(@contribution.received_at))
   end
 

@@ -3,7 +3,7 @@ class FboAccountTransactionsController < ApplicationController
 
   def assign
     load_transaction
-    Contributions::IndividualContributionService.new.assign_fbo_transaction(@transaction, load_participant)
+    Te::IndividualContributionService.new.assign_fbo_transaction(@transaction, load_participant)
   end
 
   private

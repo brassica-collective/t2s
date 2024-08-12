@@ -1,4 +1,4 @@
-class Contributions::MonthlyAggregateService
+class Te::ContributionAggregateService
   def aggregate_all(scheme)
     scheme.participants.each do |participant|
       aggregate(participant, participant.first_month)
