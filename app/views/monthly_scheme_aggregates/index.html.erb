@@ -1,0 +1,22 @@
+<article>
+  <h1>TE Scheme Months: <%= @scheme.name %></h1>
+  <nav>
+    <ul>
+      <li><%= link_to "< back to Scheme", @scheme %></li>
+    </ul>
+  </nav>
+  <table>
+    <thead>
+      <tr>
+        <th>Month</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @monthly_aggregates.each do |ma| %>
+        <tr>
+          <td><%= ma.month %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</article>

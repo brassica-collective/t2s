@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :te_scheme_contributions, as: :contributions, path: :contributions, only: [:index] do
       post :reaggregate, on: :member
     end
+    resources :monthly_scheme_aggregates, as: :aggregates, path: :aggregates, only: [:index]
 
     post :reaggregate, on: :member
   end

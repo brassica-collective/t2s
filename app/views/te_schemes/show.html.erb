@@ -6,6 +6,7 @@
       <li><%= link_to "FBO account", @scheme.fbo_account %></li>
       <li><%= link_to "Participants", te_scheme_participants_path(@scheme) %></li>
       <li><%= link_to "Contributions", te_scheme_contributions_path(@scheme) %></li>
+      <li><%= link_to "Months", te_scheme_aggregates_path(@scheme) %></li>
       <li><%= button_to "Reaggregate", reaggregate_te_scheme_path(@scheme) %></li>
     </ul>
   </nav>
