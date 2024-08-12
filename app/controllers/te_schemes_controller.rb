@@ -1,6 +1,12 @@
 class TeSchemesController < ApplicationController
+  before_action :load_scheme, only: [:show, :reaggregate]
+
   def show
-    load_scheme
+  end
+
+  def reaggregate
+    Contributions::MonthlyAggregateService.new.aggregate_all(@scheme)
+    redirect_to @scheme
   end
 
   private

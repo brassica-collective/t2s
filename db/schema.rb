@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_011019) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "monthly_aggregates", force: :cascade do |t|
+  create_table "monthly_participant_aggregates", force: :cascade do |t|
     t.bigint "te_scheme_participant_id", null: false
     t.integer "year", null: false
     t.integer "month_number", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_011019) do
     t.integer "demurrage_cents", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["te_scheme_participant_id"], name: "index_monthly_aggregates_on_te_scheme_participant_id"
+    t.index ["te_scheme_participant_id"], name: "idx_on_te_scheme_participant_id_84833ddf80"
   end
 
   create_table "te_scheme_contributions", force: :cascade do |t|
@@ -87,7 +87,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_10_011019) do
   add_foreign_key "fbo_account_statements", "fbo_accounts"
   add_foreign_key "fbo_account_transactions", "fbo_account_statements"
   add_foreign_key "fbo_account_transactions", "fbo_accounts"
-  add_foreign_key "monthly_aggregates", "te_scheme_participants"
+  add_foreign_key "monthly_participant_aggregates", "te_scheme_participants"
   add_foreign_key "te_scheme_contributions", "fbo_account_transactions"
   add_foreign_key "te_scheme_contributions", "te_scheme_participants"
   add_foreign_key "te_scheme_participants", "te_schemes"

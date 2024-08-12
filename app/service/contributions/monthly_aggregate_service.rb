@@ -1,4 +1,10 @@
 class Contributions::MonthlyAggregateService
+  def aggregate_all(scheme)
+    scheme.participants.each do |participant|
+      aggregate(participant, participant.first_month)
+    end
+  end
+
   def aggregate(participant, month)
     existing = find_existing(participant, month)
     if existing

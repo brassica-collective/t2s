@@ -1,4 +1,4 @@
-class MonthlyAggregate < ApplicationRecord
+class MonthlyParticipantAggregate < ApplicationRecord
   composed_of :month, class_name: 'Month', mapping: [ %w(year year), %w(month_number number) ]
   composed_of :deposit_total, class_name: 'Money', mapping: [ %w(deposit_total_cents cents) ]
   composed_of :balance, class_name: 'Money', mapping: [ %w(balance_cents cents) ]

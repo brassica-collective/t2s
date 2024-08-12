@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :te_scheme_contributions, as: :contributions, path: :contributions, only: [:index] do
       post :reaggregate, on: :member
     end
+
+    post :reaggregate, on: :member
   end
 
   # Defines the root path route ("/")

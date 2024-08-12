@@ -1,6 +1,6 @@
-class CreateMonthlyAggregates < ActiveRecord::Migration[7.1]
+class CreateMonthlyParticipantAggregates < ActiveRecord::Migration[7.1]
   def change
-    create_table :monthly_aggregates do |t|
+    create_table :monthly_participant_aggregates do |t|
       t.belongs_to :te_scheme_participant, null: false, foreign_key: true
       t.integer :year, null: false
       t.integer :month_number, null: false
