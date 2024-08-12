@@ -43,10 +43,14 @@ class Contributions::MonthlyAggregateService
   end
 
   def compute_demurrage(previous_aggregate)
-    previous_balance(previous_aggregate) * demurrage_rate
+    previous_balance(previous_aggregate) * monthy_demurrage_rate
   end
 
-  def demurrage_rate
+  def monthy_demurrage_rate
+    yearly_demurrage_rate / 12
+  end
+
+  def yearly_demurrage_rate
     0.02
   end
 

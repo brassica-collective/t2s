@@ -1,5 +1,5 @@
 class Contributions::IndividualContributionService
-  def initialize(aggregate_service = MonthlyAggregateService.new)
+  def initialize(aggregate_service = Contributions::MonthlyAggregateService.new)
     @aggregate_service = aggregate_service
   end
 
