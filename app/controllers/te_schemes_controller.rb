@@ -5,7 +5,7 @@ class TeSchemesController < ApplicationController
   end
 
   def reaggregate
-    Te::SchemeAggregateService.new.aggregate_all(@scheme)
+    Te::SchemeAggregateService.new.aggregate_participants_and_scheme(@scheme)
     redirect_to @scheme
   end
 

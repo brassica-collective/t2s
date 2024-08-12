@@ -12,6 +12,7 @@ class MonthlyParticipantAggregate < ApplicationRecord
   scope :date_order, -> { order(year: :asc, month_number: :asc) }
   scope :before_month, ->(month) { where("year < ? OR (year = ? AND month_number < ?)", month.year, month.year, month.number) }
   default_scope { date_order }
+  scope :for_month, ->(month) { where(year: month.year, month_number: month.number) }
 
   def previous_aggregate
     participant.monthly_aggregates.before_month(month).date_order.last
