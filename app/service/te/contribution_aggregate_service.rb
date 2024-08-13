@@ -38,6 +38,7 @@ class Te::ContributionAggregateService
     aggregate.demurrage = compute_demurrage(previous_aggregate)
     aggregate.te_issue = aggregate.deposit_total
     aggregate.te_balance = compute_te_balance(aggregate, previous_aggregate)
+    aggregate.fbo_funds_added = aggregate.deposit_total
     aggregate.save!
   end
 

@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_232612) do
     t.integer "demurrage_cents", null: false
     t.integer "te_issue_cents", null: false
     t.integer "te_balance_cents", null: false
+    t.integer "fbo_funds_added_cents", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["te_scheme_participant_id"], name: "idx_on_te_scheme_participant_id_84833ddf80"
@@ -64,6 +65,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_232612) do
     t.integer "month_number", null: false
     t.integer "te_issue_cents", null: false
     t.integer "te_total_cents", null: false
+    t.integer "fbo_funds_added_cents", null: false
+    t.integer "fbo_funds_total_cents", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["te_scheme_id"], name: "index_monthly_scheme_aggregates_on_te_scheme_id"
@@ -72,7 +75,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_232612) do
   create_table "te_scheme_contributions", force: :cascade do |t|
     t.bigint "fbo_account_transaction_id", null: false
     t.bigint "te_scheme_participant_id", null: false
-    t.integer "amount_cents"
+    t.integer "amount_cents", null: false
+    t.integer "fbo_funds_added_cents", null: false
     t.datetime "received_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

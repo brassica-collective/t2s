@@ -44,6 +44,8 @@ class Te::SchemeAggregateService
 
     aggregate.te_issue = compute_te_issue(participant_aggregates)
     aggregate.te_total = compute_te_total(aggregate, previous_aggregate)
+    aggregate.fbo_funds_added = compute_fbo_funds_added(participant_aggregates)
+    aggregate.fbo_funds_total = compute_fbo_funds_total(aggregate, previous_aggregate)
     aggregate.save!
   end
 
@@ -61,5 +63,17 @@ class Te::SchemeAggregateService
 
   def previous_te_total(previous_aggregate)
     previous_aggregate.nil? ? Money.new(0) : previous_aggregate.te_total
+  end
+
+  def compute_fbo_funds_added(participant_aggregates)
+    participant_aggregates.map(&:fbo_funds_added).sum
+  end
+
+  def compute_fbo_funds_total(aggregate, previous_aggregate)
+    previous_fbo_funds_total(previous_aggregate) + aggregate.fbo_funds_added
+  end
+
+  def previous_fbo_funds_total(previous_aggregate)
+    previous_aggregate.nil? ? Money.new(0) : previous_aggregate.fbo_funds_total
   end
 end

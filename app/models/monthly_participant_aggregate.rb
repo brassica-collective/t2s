@@ -1,13 +1,18 @@
 class MonthlyParticipantAggregate < ApplicationRecord
   include HasMonth
+  include HasMoney
 
-  composed_of :deposit_total, class_name: 'Money', mapping: [ %w(deposit_total_cents cents) ]
-  composed_of :demurrage, class_name: 'Money', mapping: [ %w(demurrage_cents cents) ]
-  composed_of :te_issue, class_name: 'Money', mapping: [ %w(te_issue_cents cents) ]
-  composed_of :te_balance, class_name: 'Money', mapping: [ %w(te_balance_cents cents) ]
+  money :deposit_total
+  money :demurrage
+  money :te_issue
+  money :te_balance
+  money :fbo_funds_added
 
   belongs_to :participant, class_name: 'TeSchemeParticipant', foreign_key: :te_scheme_participant_id
+
   validates :deposit_total_cents, presence: true
+  validates :year, presence: true
+  validates :month_number, presence: true, uniqueness: { scope: [:te_scheme_participant_id, :year] }
 
   def previous_aggregate
     participant.monthly_aggregates.before_month(month).date_order.last

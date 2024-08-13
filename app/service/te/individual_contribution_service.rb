@@ -27,6 +27,7 @@ class Te::IndividualContributionService
       fbo_account_transaction: fbo_transaction,
       participant: participant,
       amount_cents: fbo_transaction.amount_cents,
+      fbo_funds_added_cents: fbo_transaction.amount_cents,
       received_at: fbo_transaction.posted_at
     )
   end
