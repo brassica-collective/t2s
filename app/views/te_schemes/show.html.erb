@@ -29,8 +29,14 @@
           <th>Liquidity</th>
           <td class="number"><%= number_to_percentage @monthly_aggregate.liquidity %></td>
         </tr>
-        <th>TE Total Value</th>
-        <td class="money"><%= number_to_currency @monthly_aggregate.te_total_value %></td>
+        <tr>
+          <th>TE Total Value</th>
+          <td class="money"><%= number_to_currency @monthly_aggregate.te_total_value %></td>
+        </tr>
+        <tr>
+          <th>TE Payout</th>
+          <td class="money"><%= number_to_currency number_with_precision @monthly_aggregate.te_value_ratio, precision: 2 %></td>
+        </tr>
       </tbody>
     </table>
     <h2>Streams</h2>
