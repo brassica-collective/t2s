@@ -8,6 +8,6 @@ module HasMonth
     scope :before_month, ->(month) { where("year < ? OR (year = ? AND month_number < ?)", month.year, month.year, month.number) }
     default_scope { date_order }
     scope :for_month, ->(month) { where(year: month.year, month_number: month.number) }
-    scope :current, -> { for_month(Month.now).first }
+    scope :current, -> { for_month(Month.now) }
   end
 end

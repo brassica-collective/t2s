@@ -2,7 +2,7 @@ class TeSchemesController < ApplicationController
   before_action :load_scheme, only: [:show, :reaggregate]
 
   def show
-    @monthly_aggregate = @scheme.monthly_aggregates.current
+    @monthly_aggregate = @scheme.monthly_aggregates.current.first
   end
 
   def reaggregate

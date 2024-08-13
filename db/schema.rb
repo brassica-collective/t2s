@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_232612) do
     t.integer "deposit_total_cents", null: false
     t.integer "demurrage_cents", null: false
     t.integer "te_issue_cents", null: false
+    t.integer "te_delta_cents", null: false
     t.integer "te_balance_cents", null: false
     t.integer "fbo_funds_added_cents", null: false
     t.datetime "created_at", null: false
@@ -64,6 +65,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_232612) do
     t.integer "year", null: false
     t.integer "month_number", null: false
     t.integer "te_issue_cents", null: false
+    t.integer "te_delta_cents", null: false
+    t.integer "te_demurrage_cents", null: false
     t.integer "te_total_cents", null: false
     t.integer "fbo_funds_added_cents", null: false
     t.integer "fbo_funds_total_cents", null: false

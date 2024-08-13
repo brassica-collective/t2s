@@ -3,6 +3,8 @@ class MonthlySchemeAggregate < ApplicationRecord
   include HasMoney
 
   money :te_issue
+  money :te_delta
+  money :te_demurrage
   money :te_total
   money :fbo_funds_added
   money :fbo_funds_total

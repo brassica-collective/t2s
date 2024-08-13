@@ -5,6 +5,8 @@ class CreateMonthlySchemeAggregates < ActiveRecord::Migration[7.1]
       t.integer :year, null: false
       t.integer :month_number, null: false
       t.integer :te_issue_cents, null: false
+      t.integer :te_delta_cents, null: false
+      t.integer :te_demurrage_cents, null: false
       t.integer :te_total_cents, null: false
       t.integer :fbo_funds_added_cents, null: false
       t.integer :fbo_funds_total_cents, null: false

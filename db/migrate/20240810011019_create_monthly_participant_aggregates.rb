@@ -7,6 +7,7 @@ class CreateMonthlyParticipantAggregates < ActiveRecord::Migration[7.1]
       t.integer :deposit_total_cents, null: false
       t.integer :demurrage_cents, null: false
       t.integer :te_issue_cents, null: false
+      t.integer :te_delta_cents, null: false
       t.integer :te_balance_cents, null: false
       t.integer :fbo_funds_added_cents, null: false
       t.timestamps
