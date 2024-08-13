@@ -68,8 +68,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_13_070851) do
     t.integer "te_delta_cents", null: false
     t.integer "te_demurrage_cents", null: false
     t.integer "te_total_cents", null: false
-    t.integer "te_expenditure_cents", null: false
     t.integer "fbo_funds_added_cents", null: false
+    t.integer "fbo_expenditure_cents", null: false
     t.integer "fbo_funds_total_cents", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

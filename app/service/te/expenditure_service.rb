@@ -18,7 +18,7 @@ class Te::ExpenditureService
     TeSchemeExpenditure.create!(
       fbo_account_transaction: fbo_transaction,
       te_scheme: fbo_transaction.fbo_account.te_scheme,
-      amount_cents: fbo_transaction.amount_cents,
+      amount_cents: - fbo_transaction.amount_cents,
       occured_at: fbo_transaction.posted_at
     )
   end

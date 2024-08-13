@@ -8,8 +8,8 @@ class MonthlySchemeAggregate < ApplicationRecord
   money :te_delta
   money :te_demurrage
   money :te_total
-  money :te_expenditure
   money :fbo_funds_added
+  money :fbo_expenditure
   money :fbo_funds_total
 
   belongs_to :te_scheme
@@ -22,6 +22,7 @@ class MonthlySchemeAggregate < ApplicationRecord
   end
 
   def liquidity
+    #raise "#{fbo_funds_total.inspect} / #{te_total.inspect}"
     fbo_funds_total / te_total
   end
 

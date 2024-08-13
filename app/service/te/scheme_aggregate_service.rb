@@ -46,8 +46,8 @@ class Te::SchemeAggregateService
     aggregate.te_delta = compute_te_delta(participant_aggregates)
     aggregate.te_demurrage = compute_te_demurrage(participant_aggregates)
     aggregate.te_total = compute_te_total(aggregate, previous_aggregate)
-    aggregate.te_expenditure = compute_te_expenditure_total(scheme, month)
     aggregate.fbo_funds_added = compute_fbo_funds_added(participant_aggregates)
+    aggregate.fbo_expenditure = compute_fbo_expenditure_total(scheme, month)
     aggregate.fbo_funds_total = compute_fbo_funds_total(aggregate, previous_aggregate)
     aggregate.save!
   end
@@ -69,7 +69,7 @@ class Te::SchemeAggregateService
   end
 
   def compute_te_total(aggregate, previous_aggregate)
-    (previous_aggregate&.te_delta || Money.new(0)) + aggregate.te_delta
+    (previous_aggregate&.te_total || Money.new(0)) + aggregate.te_delta
   end
 
   def compute_fbo_funds_added(participant_aggregates)
@@ -77,10 +77,10 @@ class Te::SchemeAggregateService
   end
 
   def compute_fbo_funds_total(aggregate, previous_aggregate)
-    (previous_aggregate&.fbo_funds_added || Money.new(0)) + aggregate.fbo_funds_added
+    (previous_aggregate&.fbo_funds_total || Money.new(0)) + aggregate.fbo_funds_added - aggregate.fbo_expenditure
   end
 
-  def compute_te_expenditure_total(scheme, month)
+  def compute_fbo_expenditure_total(scheme, month)
     sum_money scheme.expenditures.for_month(month).map(&:amount)
   end
 
