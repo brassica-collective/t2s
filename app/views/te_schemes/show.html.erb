@@ -10,4 +10,16 @@
       <li><%= button_to "Reaggregate", reaggregate_te_scheme_path(@scheme) %></li>
     </ul>
   </nav>
+  <table>
+    <tbody>
+      <tr>
+        <th>Participants</th>
+        <td><%= @scheme.participants.count %></td>
+      </tr>
+      <tr>
+        <th>TE Total</th>
+        <td class="money"><%= number_to_currency @monthly_aggregate.te_total %></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
