@@ -38,7 +38,7 @@ class Te::ContributionAggregateService
     aggregate.demurrage = compute_demurrage(previous_aggregate)
     aggregate.te_issue = aggregate.deposit_total
     aggregate.te_delta = aggregate.te_issue - aggregate.demurrage
-    aggregate.te_balance = compute_te_balance(aggregate, previous_aggregate)
+    aggregate.te_max_balance = compute_te_max_balance(aggregate, previous_aggregate)
     aggregate.fbo_funds_added = aggregate.deposit_total
     aggregate.save!
   end
@@ -47,12 +47,12 @@ class Te::ContributionAggregateService
     Money.new(participant.contributions.for_month(month).sum(:amount_cents))
   end
 
-  def compute_te_balance(aggregate, previous_aggregate)
-    previous_te_balance(previous_aggregate) + aggregate.te_delta
+  def compute_te_max_balance(aggregate, previous_aggregate)
+    previous_te_max_balance(previous_aggregate) + aggregate.te_delta
   end
 
   def compute_demurrage(previous_aggregate)
-    previous_te_balance(previous_aggregate) * monthy_demurrage_rate
+    previous_te_max_balance(previous_aggregate) * monthy_demurrage_rate
   end
 
   def monthy_demurrage_rate
@@ -63,7 +63,7 @@ class Te::ContributionAggregateService
     0.02
   end
 
-  def previous_te_balance(previous_aggregate)
-    previous_aggregate&.te_balance || Money.new(0)
+  def previous_te_max_balance(previous_aggregate)
+    previous_aggregate&.te_max_balance || Money.new(0)
   end
 end

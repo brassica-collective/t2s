@@ -15,7 +15,7 @@
         <th>Demurrage</th>
         <th>TE Issue</th>
         <th>TE Delta</th>
-        <th>TE Balance</th>
+        <th>TE Max Balance</th>
         <th>FBO Funds added</th>
       </tr>
     </thead>
@@ -27,7 +27,7 @@
           <td class="money"><%= number_to_currency ma.demurrage %></td>
           <td class="money"><%= number_to_currency ma.te_issue %></td>
           <td class="money"><%= number_to_currency ma.te_delta %></td>
-          <td class="money"><%= number_to_currency ma.te_balance %></td>
+          <td class="money"><%= number_to_currency ma.te_max_balance %></td>
           <td class="money"><%= number_to_currency ma.fbo_funds_added %></td>
         </tr>
       <% end %>

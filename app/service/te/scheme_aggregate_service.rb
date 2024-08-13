@@ -49,6 +49,7 @@ class Te::SchemeAggregateService
     aggregate.fbo_funds_added = compute_fbo_funds_added(participant_aggregates)
     aggregate.fbo_expenditure = compute_fbo_expenditure_total(scheme, month)
     aggregate.fbo_funds_total = compute_fbo_funds_total(aggregate, previous_aggregate)
+    aggregate.te_total_value = compute_te_total_value(aggregate)
     aggregate.save!
   end
 
@@ -86,5 +87,13 @@ class Te::SchemeAggregateService
 
   def sum_money(collection)
     Money::Collection.new(collection).sum
+  end
+
+  def compute_te_total_value(aggregate)
+    [aggregate.te_total, asset_total(aggregate)].min
+  end
+
+  def asset_total(aggregate)
+    aggregate.fbo_funds_total # + real estate total value
   end
 end

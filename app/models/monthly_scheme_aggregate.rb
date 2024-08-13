@@ -8,6 +8,7 @@ class MonthlySchemeAggregate < ApplicationRecord
   money :te_delta
   money :te_demurrage
   money :te_total
+  money :te_total_value
   money :fbo_funds_added
   money :fbo_expenditure
   money :fbo_funds_total

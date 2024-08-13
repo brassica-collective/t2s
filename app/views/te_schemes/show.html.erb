@@ -29,6 +29,8 @@
           <th>Liquidity</th>
           <td class="number"><%= number_to_percentage @monthly_aggregate.liquidity %></td>
         </tr>
+        <th>TE Total Value</th>
+        <td class="money"><%= number_to_currency @monthly_aggregate.te_total_value %></td>
       </tbody>
     </table>
     <h2>Streams</h2>

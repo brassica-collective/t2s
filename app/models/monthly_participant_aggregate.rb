@@ -6,7 +6,7 @@ class MonthlyParticipantAggregate < ApplicationRecord
   money :demurrage
   money :te_issue
   money :te_delta
-  money :te_balance
+  money :te_max_balance
   money :fbo_funds_added
 
   belongs_to :participant, class_name: 'TeSchemeParticipant', foreign_key: :te_scheme_participant_id
