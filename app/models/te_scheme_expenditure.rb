@@ -6,5 +6,5 @@ class TeSchemeExpenditure < ApplicationRecord
 
   money :amount
 
-
+  validates :fbo_account_transaction, presence: true, uniqueness: { scope: :te_scheme }
 end

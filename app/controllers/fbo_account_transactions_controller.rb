@@ -1,9 +1,17 @@
 class FboAccountTransactionsController < ApplicationController
   before_action :load_fbo_account
+  before_action :load_transaction, only: [:assign, :expend]
 
   def assign
-    load_transaction
     Te::IndividualContributionService.new.assign_fbo_transaction(@transaction, load_participant)
+  end
+
+  def expend
+    Te::ExpenditureService.new.expend_fbo_transaction(@transaction)
+  end
+
+  def index
+    @scheme = @account.te_scheme
   end
 
   private

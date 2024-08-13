@@ -33,6 +33,8 @@
                   <%= form.submit "Assign" %>
                 <% end %>
               <% end %>
+            <% elsif transaction.money_out? %>
+              <%= button_to "Expend", expend_fbo_account_transaction_path(@account, transaction), method: :post %>
             <% end %>
           </td>
         </tr>

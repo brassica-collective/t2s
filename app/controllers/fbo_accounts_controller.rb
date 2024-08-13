@@ -4,7 +4,6 @@ class FboAccountsController < ApplicationController
   end
 
   def show
-    @account = FboAccount.find(params[:id])
-    @scheme = @account.te_scheme
+    redirect_to fbo_account_transactions_path(@account)
   end
 end
