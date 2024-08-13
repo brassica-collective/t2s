@@ -17,6 +17,7 @@
         <th>TE Delta</th>
         <th>TE Max Balance</th>
         <th>FBO Funds added</th>
+        <th>TE Value</th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@
           <td class="money"><%= number_to_currency ma.te_delta %></td>
           <td class="money"><%= number_to_currency ma.te_max_balance %></td>
           <td class="money"><%= number_to_currency ma.fbo_funds_added %></td>
+          <td class="money"><%= number_to_currency ma.te_value %></td>
         </tr>
       <% end %>
     </tbody>

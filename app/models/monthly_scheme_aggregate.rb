@@ -50,6 +50,10 @@ class MonthlySchemeAggregate < ApplicationRecord
     stream_dollar_value(stream_id) / total_stream_dollar_value
   end
 
+  def te_value_ratio
+    te_total_value / te_total
+  end
+
   private
 
   def validate_stream_id(stream_id)

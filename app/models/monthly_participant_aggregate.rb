@@ -18,4 +18,17 @@ class MonthlyParticipantAggregate < ApplicationRecord
   def previous_aggregate
     participant.monthly_aggregates.before_month(month).date_order.last
   end
+
+  def te_value(scheme_aggregate = nil)
+    scheme_aggregate ||= scheme.monthly_aggregates.for_month(month).first
+    return Money.new(0) unless scheme_aggregate
+
+    scheme_aggregate.te_value_ratio * te_max_balance
+  end
+
+  private
+
+  def scheme
+    participant.te_scheme
+  end
 end
