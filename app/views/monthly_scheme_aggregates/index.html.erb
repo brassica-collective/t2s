@@ -11,6 +11,8 @@
         <th>Month</th>
         <th>TE Issued</th>
         <th>TE Total</th>
+        <th>FBO Funds Added</th>
+        <th>FBO Funds Total</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +21,8 @@
           <td><%= ma.month %></td>
           <td class="money"><%= number_to_currency ma.te_issue %></td>
           <td class="money"><%= number_to_currency ma.te_total %></td>
+          <td class="money"><%= number_to_currency ma.fbo_funds_added %></td>
+          <td class="money"><%= number_to_currency ma.fbo_funds_total %></td>
         </tr>
       <% end %>
     </tbody>

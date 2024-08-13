@@ -21,6 +21,10 @@
           <th>TE Total</th>
           <td class="money"><%= number_to_currency @monthly_aggregate.te_total %></td>
         </tr>
+        <tr>
+          <th>FBO Funds Total</th>
+          <td class="money"><%= number_to_currency @monthly_aggregate.fbo_funds_total %></td>
+        </tr>
       </tbody>
     </table>
   <% end %>
