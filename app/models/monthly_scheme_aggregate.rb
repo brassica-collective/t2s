@@ -12,6 +12,7 @@ class MonthlySchemeAggregate < ApplicationRecord
   money :fbo_funds_added
   money :fbo_expenditure
   money :fbo_funds_total
+  money :asset_total
 
   belongs_to :te_scheme
 
@@ -34,9 +35,9 @@ class MonthlySchemeAggregate < ApplicationRecord
     when :bm
       Money.new(0)
     when :te
-      te_total
+      te_total_value
     when :cs
-      fbo_funds_total - te_total
+      [asset_total - stream_dollar_value(:te), Money.new(0)].max
     end
   end
 
