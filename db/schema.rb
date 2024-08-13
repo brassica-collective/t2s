@@ -50,8 +50,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_232612) do
     t.integer "year", null: false
     t.integer "month_number", null: false
     t.integer "deposit_total_cents", null: false
-    t.integer "balance_cents", null: false
     t.integer "demurrage_cents", null: false
+    t.integer "te_issue_cents", null: false
+    t.integer "te_balance_cents", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["te_scheme_participant_id"], name: "idx_on_te_scheme_participant_id_84833ddf80"

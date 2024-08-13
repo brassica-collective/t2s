@@ -13,7 +13,8 @@
         <th>Month</th>
         <th>Deposit Total</th>
         <th>Demurrage</th>
-        <th>Balance</th>
+        <th>TE Issued</th>
+        <th>TE Balanhce</th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +23,8 @@
           <td><%= ma.month %></td>
           <td class="money"><%= number_to_currency ma.deposit_total %></td>
           <td class="money"><%= number_to_currency ma.demurrage %></td>
-          <td class="money"><%= number_to_currency ma.balance %></td>
+          <td class="money"><%= number_to_currency ma.te_issued %></td>
+          <td class="money"><%= number_to_currency ma.te_balance %></td>
         </tr>
       <% end %>
     </tbody>

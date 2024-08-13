@@ -9,12 +9,16 @@
     <thead>
       <tr>
         <th>Month</th>
+        <th>TE Issued</th>
+        <th>TE Total</th>
       </tr>
     </thead>
     <tbody>
       <% @monthly_aggregates.each do |ma| %>
         <tr>
           <td><%= ma.month %></td>
+          <td class="money"><%= number_to_currency ma.te_issue %></td>
+          <td class="money"><%= number_to_currency ma.te_total %></td>
         </tr>
       <% end %>
     </tbody>
