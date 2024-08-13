@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 gem "ofx", git: "https://github.com/JoeDupuis/ofx"
 
 gem "money", "~> 6.19.0"
+gem 'money-collection'
 gem 'month', '~> 2.0'
 
 group :development, :test do

@@ -4,10 +4,12 @@ class FboAccountTransactionsController < ApplicationController
 
   def assign
     Te::IndividualContributionService.new.assign_fbo_transaction(@transaction, load_participant)
+    reload_index
   end
 
   def expend
     Te::ExpenditureService.new.expend_fbo_transaction(@transaction)
+    reload_index
   end
 
   def index
@@ -15,6 +17,12 @@ class FboAccountTransactionsController < ApplicationController
   end
 
   private
+
+  def reload_index
+    load_fbo_account
+    index
+    render action: :index
+  end
 
   def load_fbo_account
     @account = FboAccount.find(params[:fbo_account_id])

@@ -11,7 +11,6 @@ class Te::IndividualContributionService
       contribution = create_contribution(fbo_transaction, participant)
       aggregate_service.aggregate(participant, Month(contribution.received_at))
     end
-
   end
 
   private

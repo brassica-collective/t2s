@@ -7,4 +7,7 @@ class TeSchemeExpenditure < ApplicationRecord
   money :amount
 
   validates :fbo_account_transaction, presence: true, uniqueness: { scope: :te_scheme }
+
+  scope :for_fbo_transaction, ->(fbo_transaction) { where(fbo_account_transaction: fbo_transaction) }
+  scope :for_month, ->(month) { where(occured_at: month.dates) }
 end

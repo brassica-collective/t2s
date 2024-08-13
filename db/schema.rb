@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_13_070851) do
     t.integer "te_delta_cents", null: false
     t.integer "te_demurrage_cents", null: false
     t.integer "te_total_cents", null: false
+    t.integer "te_expenditure_cents", null: false
     t.integer "fbo_funds_added_cents", null: false
     t.integer "fbo_funds_total_cents", null: false
     t.datetime "created_at", null: false
@@ -91,6 +92,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_13_070851) do
     t.bigint "te_scheme_id", null: false
     t.bigint "fbo_account_transaction_id", null: false
     t.integer "amount_cents", null: false
+    t.datetime "occured_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fbo_account_transaction_id"], name: "index_te_scheme_expenditures_on_fbo_account_transaction_id"
