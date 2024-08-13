@@ -24,6 +24,10 @@ table td, table th {
   padding: 4px 1em;
 }
 
-table td.money {
+table.vertical th {
+  text-align: left;
+}
+
+table td.money, table td.number {
   text-align: right;
 }

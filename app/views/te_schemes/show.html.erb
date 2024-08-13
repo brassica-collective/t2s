@@ -11,11 +11,11 @@
     </ul>
   </nav>
   <% if @monthly_aggregate %>
-    <table>
+    <table class="vertical">
       <tbody>
         <tr>
           <th>Participants</th>
-          <td><%= @scheme.participants.count %></td>
+          <td class="number"><%= @scheme.participants.count %></td>
         </tr>
         <tr>
           <th>TE Total</th>
@@ -24,6 +24,32 @@
         <tr>
           <th>FBO Funds Total</th>
           <td class="money"><%= number_to_currency @monthly_aggregate.fbo_funds_total %></td>
+        </tr>
+        <tr>
+          <th>Liquidity</th>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.liquidity %></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Streams</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Bank Mortgage</th>
+          <th>Transitional Equity</th>
+          <th>Collective Stewardship</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="money"><%= number_to_currency @monthly_aggregate.stream_dollar_value(:bm) %></td>
+          <td class="money"><%= number_to_currency @monthly_aggregate.stream_dollar_value(:te) %></td>
+          <td class="money"><%= number_to_currency @monthly_aggregate.stream_dollar_value(:cs) %></td>
+        </tr>
+        <tr>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:bm) %></td>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:te) %></td>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:cs) %></td>
         </tr>
       </tbody>
     </table>
