@@ -27,7 +27,7 @@
         </tr>
         <tr>
           <th>Liquidity</th>
-          <td class="number"><%= number_to_percentage @monthly_aggregate.liquidity %></td>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.liquidity * 100.0, precision: 1 %></td>
         </tr>
         <tr>
           <th>TE Total Value</th>
@@ -55,9 +55,9 @@
           <td class="money"><%= number_to_currency @monthly_aggregate.stream_dollar_value(:cs) %></td>
         </tr>
         <tr>
-          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:bm) %></td>
-          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:te) %></td>
-          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:cs) %></td>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:bm), precision: 1 %></td>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:te), precision: 1 %></td>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:cs), precision: 1 %></td>
         </tr>
       </tbody>
     </table>
