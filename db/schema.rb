@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_13_070851) do
     t.integer "fbo_expenditure_cents", null: false
     t.integer "fbo_funds_total_cents", null: false
     t.integer "asset_total_cents", null: false
+    t.string "status", default: "open"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["te_scheme_id"], name: "index_monthly_scheme_aggregates_on_te_scheme_id"

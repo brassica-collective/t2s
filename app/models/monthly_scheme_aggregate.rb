@@ -14,10 +14,13 @@ class MonthlySchemeAggregate < ApplicationRecord
   money :fbo_funds_total
   money :asset_total
 
+  enum status: { open: 'open', closed: 'closed' }
+
   belongs_to :te_scheme
 
   validates :year, presence: true
   validates :month_number, presence: true, uniqueness: { scope: [:te_scheme_id, :year] }
+  validates :status, presence: true
 
   def previous_aggregate
     te_scheme.monthly_aggregates.before_month(month).date_order.last

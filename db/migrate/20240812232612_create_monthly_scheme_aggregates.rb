@@ -13,6 +13,7 @@ class CreateMonthlySchemeAggregates < ActiveRecord::Migration[7.1]
       t.integer :fbo_expenditure_cents, null: false
       t.integer :fbo_funds_total_cents, null: false
       t.integer :asset_total_cents, null: false
+      t.string  :status, default: 'open'
       t.timestamps
     end
   end

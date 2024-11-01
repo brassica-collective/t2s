@@ -16,6 +16,7 @@
         <th>FBO Funds Added</th>
         <th>FBO Expenditure</th>
         <th>FBO Funds Total</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@
           <td class="money"><%= number_to_currency ma.fbo_funds_added %></td>
           <td class="money"><%= number_to_currency ma.fbo_expenditure %></td>
           <td class="money"><%= number_to_currency ma.fbo_funds_total %></td>
+          <td><%= ma.status %></td>
         </tr>
       <% end %>
     </tbody>
