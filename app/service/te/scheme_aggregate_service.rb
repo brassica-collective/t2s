@@ -51,6 +51,7 @@ class Te::SchemeAggregateService
     aggregate.fbo_funds_total = compute_fbo_funds_total(aggregate, previous_aggregate)
     aggregate.asset_total = compute_asset_total(aggregate)
     aggregate.te_total_value = compute_te_total_value(aggregate)
+    aggregate.status = month < Month.now ? 'closed' : 'open'
     aggregate.save!
   end
 

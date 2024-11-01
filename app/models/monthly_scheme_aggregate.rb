@@ -22,6 +22,8 @@ class MonthlySchemeAggregate < ApplicationRecord
   validates :month_number, presence: true, uniqueness: { scope: [:te_scheme_id, :year] }
   validates :status, presence: true
 
+  scope :current_closed, -> { closed.latest }
+
   def previous_aggregate
     te_scheme.monthly_aggregates.before_month(month).date_order.last
   end

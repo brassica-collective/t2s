@@ -18,6 +18,10 @@
           <td class="number"><%= @scheme.participants.count %></td>
         </tr>
         <tr>
+          <th>Date</th>
+          <td><%= @monthly_aggregate.month.end_date %></td>
+        </tr>
+        <tr>
           <th>TE Total</th>
           <td class="money"><%= number_to_currency @monthly_aggregate.te_total %></td>
         </tr>
@@ -55,9 +59,9 @@
           <td class="money"><%= number_to_currency @monthly_aggregate.stream_dollar_value(:cs) %></td>
         </tr>
         <tr>
-          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:bm), precision: 1 %></td>
-          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:te), precision: 1 %></td>
-          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:cs), precision: 1 %></td>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:bm) * 100.0, precision: 1 %></td>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:te) * 100.0, precision: 1 %></td>
+          <td class="number"><%= number_to_percentage @monthly_aggregate.stream_ratio(:cs) * 100.0, precision: 1 %></td>
         </tr>
       </tbody>
     </table>
