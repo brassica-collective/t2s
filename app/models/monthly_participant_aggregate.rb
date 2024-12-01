@@ -9,11 +9,16 @@ class MonthlyParticipantAggregate < ApplicationRecord
   money :te_max_balance
   money :fbo_funds_added
 
+  enum status: { open: 'open', closed: 'closed' }
+
   belongs_to :participant, class_name: 'TeSchemeParticipant', foreign_key: :te_scheme_participant_id
 
   validates :deposit_total_cents, presence: true
   validates :year, presence: true
   validates :month_number, presence: true, uniqueness: { scope: [:te_scheme_participant_id, :year] }
+  validates :status, presence: true
+
+  scope :current_closed, -> { closed.latest }
 
   def previous_aggregate
     participant.monthly_aggregates.before_month(month).date_order.last

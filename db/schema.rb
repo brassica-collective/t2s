@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_13_070851) do
     t.integer "te_delta_cents", null: false
     t.integer "te_max_balance_cents", null: false
     t.integer "fbo_funds_added_cents", null: false
+    t.string "status", default: "open"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["te_scheme_participant_id"], name: "idx_on_te_scheme_participant_id_84833ddf80"

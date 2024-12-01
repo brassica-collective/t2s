@@ -10,6 +10,7 @@ class CreateMonthlyParticipantAggregates < ActiveRecord::Migration[7.1]
       t.integer :te_delta_cents, null: false
       t.integer :te_max_balance_cents, null: false
       t.integer :fbo_funds_added_cents, null: false
+      t.string  :status, default: 'open'
       t.timestamps
     end
   end

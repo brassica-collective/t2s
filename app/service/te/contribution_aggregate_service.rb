@@ -40,6 +40,7 @@ class Te::ContributionAggregateService
     aggregate.te_delta = aggregate.te_issue - aggregate.demurrage
     aggregate.te_max_balance = compute_te_max_balance(aggregate, previous_aggregate)
     aggregate.fbo_funds_added = aggregate.deposit_total
+    aggregate.status = month < Month.now ? 'closed' : 'open'
     aggregate.save!
   end
 

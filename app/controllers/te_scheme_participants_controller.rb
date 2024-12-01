@@ -21,7 +21,9 @@ class TeSchemeParticipantsController < ApplicationController
   end
 
   def show
-    @monthly_aggregates = @participant.monthly_aggregates
+    @monthly_aggregates = @participant.monthly_aggregates.closed
+    @current_aggregate = @participant.monthly_aggregates.current_closed
+    @monthly_aggregate = @scheme.monthly_aggregates.current_closed
   end
 
   private

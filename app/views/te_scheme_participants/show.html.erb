@@ -16,7 +16,6 @@
         <th>TE Issue</th>
         <th>TE Delta</th>
         <th>TE Max Balance</th>
-        <th>FBO Funds added</th>
         <th>TE Value</th>
       </tr>
     </thead>
@@ -29,10 +28,34 @@
           <td class="money"><%= number_to_currency ma.te_issue %></td>
           <td class="money"><%= number_to_currency ma.te_delta %></td>
           <td class="money"><%= number_to_currency ma.te_max_balance %></td>
-          <td class="money"><%= number_to_currency ma.fbo_funds_added %></td>
           <td class="money"><%= number_to_currency ma.te_value %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+  <h2>Formatted for Email</h2>
+  <h3>This Month: <%= @current_aggregate.month %></h3>
+  <h4>Your ingoings:</h4>
+  <p>
+    Deposit Total: <%= number_to_currency @current_aggregate.deposit_total %><br>
+    TE Issue: <%= number_to_currency @current_aggregate.te_issue %><br>
+
+  </p>
+  <h4>Your outgoings:</h4>
+  <p>
+  Demurrage: <%= number_to_currency @current_aggregate.demurrage %><br></p>
+  <h4>Your Totals:</h4>
+  <p>
+    TE Max Balance: <%= number_to_currency @current_aggregate.te_max_balance %><br>
+    TE Value: <%= number_to_currency @current_aggregate.te_value %>
+  </p>
+  <h4>Scheme totals:</h4>
+  <p>
+    TE Max: <%= number_to_currency @monthly_aggregate.te_total %><br>
+    Liquidy: <%= number_to_percentage @monthly_aggregate.liquidity * 100.0, precision: 1 %><br />
+    TE Total Value: <%= number_to_currency @monthly_aggregate.te_total_value %><br>
+
+  </p>
+
 </article>
