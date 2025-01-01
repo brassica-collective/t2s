@@ -26,7 +26,7 @@
           <td><%= statement.created_at.to_formatted_s(:short) %></td>
           <td><%= statement.format %></td>
           <td><%= statement.imported_at&.to_formatted_s(:short) %></td>
-          <td><%= button_to "import", import_fbo_account_statement_path(@account, statement) %></td>
+          <td><%= button_to "import", import_fbo_account_statement_path(@account, statement) %> <%= button_to "delete", fbo_account_statement_path(@account, statement), method: :delete %></td>
         </tr>
       <% end %>
     </tbody>

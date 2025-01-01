@@ -25,6 +25,12 @@ class FboAccountStatementsController < ApplicationController
     redirect_to action: :index
   end
 
+  def destroy
+    load_statement
+    @statement.destroy
+    redirect_to action: :index
+  end
+
   private
 
   def load_statement

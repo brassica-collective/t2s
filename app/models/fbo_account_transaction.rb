@@ -1,8 +1,8 @@
 class FboAccountTransaction < ApplicationRecord
   belongs_to :fbo_account_statement
   belongs_to :fbo_account
-  has_one :te_scheme_contribution
-  has_one :te_scheme_expenditure
+  has_one :te_scheme_contribution, dependent: :destroy
+  has_one :te_scheme_expenditure, dependent: :destroy
 
   def amount
     Money.from_cents(amount_cents, "AUD")

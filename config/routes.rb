@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :fbo_accounts, only: [:index, :show] do
-    resources :fbo_account_statements, as: :statements, path: :statements, only: [:index, :new, :create] do
+    resources :fbo_account_statements, as: :statements, path: :statements, only: [:index, :new, :create, :destroy] do
       post :import, on: :member
     end
     resources :fbo_account_transactions, as: :transactions, path: :transactions, only: [:index] do
