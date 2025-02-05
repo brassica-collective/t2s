@@ -14,7 +14,7 @@ class MonthlySchemeAggregate < ApplicationRecord
   money :fbo_funds_total
   money :asset_total
 
-  enum status: { open: 'open', closed: 'closed' }
+  enum :status, open: 'open', closed: 'closed'
 
   belongs_to :te_scheme
 

@@ -9,7 +9,7 @@ class MonthlyParticipantAggregate < ApplicationRecord
   money :te_max_balance
   money :fbo_funds_added
 
-  enum status: { open: 'open', closed: 'closed' }
+  enum :status, open: 'open', closed: 'closed'
 
   belongs_to :participant, class_name: 'TeSchemeParticipant', foreign_key: :te_scheme_participant_id
 
