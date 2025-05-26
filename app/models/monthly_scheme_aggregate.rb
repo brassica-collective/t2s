@@ -5,6 +5,7 @@ class MonthlySchemeAggregate < ApplicationRecord
   STREAM_IDS = [:bm, :te, :cs].freeze
 
   money :te_issue
+  money :te_withdrawal, default: Money.new(0)
   money :te_delta
   money :te_demurrage
   money :te_total

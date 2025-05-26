@@ -43,6 +43,7 @@ class Te::SchemeAggregateService
     previous_aggregate = aggregate.previous_aggregate
 
     aggregate.te_issue = compute_te_issue(participant_aggregates)
+    aggregate.te_withdrawal = compute_te_withdrawal(participant_aggregates)
     aggregate.te_delta = compute_te_delta(participant_aggregates)
     aggregate.te_demurrage = compute_te_demurrage(participant_aggregates)
     aggregate.te_total = compute_te_total(aggregate, previous_aggregate)
@@ -61,6 +62,10 @@ class Te::SchemeAggregateService
 
   def compute_te_issue(participant_aggregates)
     sum_money participant_aggregates.map(&:te_issue)
+  end
+
+  def compute_te_withdrawal(participant_aggregates)
+    sum_money participant_aggregates.map(&:te_withdrawal)
   end
 
   def compute_te_demurrage(participant_aggregates)
