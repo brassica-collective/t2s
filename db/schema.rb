@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_13_070851) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_26_034310) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "fbo_account_statements", force: :cascade do |t|
     t.string "original_filename"
@@ -108,6 +108,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_13_070851) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "closed_on"
     t.index ["te_scheme_id"], name: "index_te_scheme_participants_on_te_scheme_id"
   end
 

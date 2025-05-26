@@ -12,6 +12,10 @@ class FboAccountTransactionsController < ApplicationController
     reload_index
   end
 
+  def withdraw
+    Te::IndividualContributionService.new.withdraw_fbo_transaction(@transaction, load)
+  end
+
   def index
     @scheme = @account.te_scheme
   end

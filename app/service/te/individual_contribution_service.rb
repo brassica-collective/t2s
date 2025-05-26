@@ -5,12 +5,15 @@ class Te::IndividualContributionService
 
   def assign_fbo_transaction(fbo_transaction, participant)
     existing = find_existing_contribution(fbo_transaction)
-    if existing
-      raise "Transaction already assigned to participant: #{existing.inspect}"
-    else
-      contribution = create_contribution(fbo_transaction, participant)
-      aggregate_service.aggregate(participant, Month(contribution.received_at))
-    end
+    raise "Transaction already assigned to participant: #{existing.inspect}" if existing
+
+    contribution = create_contribution(fbo_transaction, participant)
+    aggregate_service.aggregate(participant, Month(contribution.received_at))
+  end
+
+  def withdraw_fbo_transaction(fbo_transaction, participant)
+    existing = find_existing_contribution(fbo_transaction)
+    raise "Transaction already assigned to participant: #{existing.inspect}" if existing
   end
 
   private

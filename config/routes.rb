@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :fbo_account_transactions, as: :transactions, path: :transactions, only: [:index] do
       post :assign, on: :member
       post :expend, on: :member
+      post :withdraw, on: :member
     end
   end
 

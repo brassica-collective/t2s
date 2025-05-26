@@ -4,6 +4,8 @@ class FboAccountTransaction < ApplicationRecord
   has_one :te_scheme_contribution, dependent: :destroy
   has_one :te_scheme_expenditure, dependent: :destroy
 
+  scope :date_order, -> { order(:posted_at) }
+
   def amount
     Money.from_cents(amount_cents, "AUD")
   end
