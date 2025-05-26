@@ -1,9 +1,9 @@
 <article>
   <h1>New FBO Account Statement</h1>
-  <%= form_with url: withdraw_fbo_account_transaction_path(@account, @transaction) do |form| %>
+  <%= form_with model: @statement do |form| %>
     <p>
-      <%= form.label :participant_id, "Participant" %>
-      <%= <%= form.select('participant_id', options_from_collection_for_select(@scheme.participants, 'id', 'name', nil), include_blank: true)  %> %>
+      <%= form.label :file, "Upload file" %>
+      <%= form.file_field :file %>
     </p>
     <p>
       <%= form.submit "Submit" %>
