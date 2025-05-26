@@ -5,6 +5,7 @@ class MonthlyParticipantAggregate < ApplicationRecord
   money :deposit_total
   money :demurrage
   money :te_issue
+  money :te_withdrawal, default: Money.new(0)
   money :te_delta
   money :te_max_balance
   money :fbo_funds_added

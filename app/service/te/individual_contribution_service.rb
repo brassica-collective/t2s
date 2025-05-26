@@ -50,7 +50,7 @@ class Te::IndividualContributionService
     TeSchemeWithdrawal.create!(
       fbo_account_transaction: fbo_transaction,
       participant: participant,
-      amount_cents: fbo_transaction.amount_cents,
+      amount_cents: -fbo_transaction.amount_cents,
       occured_at: fbo_transaction.posted_at,
       reason: reason
     )
