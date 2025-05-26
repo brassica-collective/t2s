@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_26_034310) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_26_040046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -84,7 +84,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_26_034310) do
     t.bigint "fbo_account_transaction_id", null: false
     t.bigint "te_scheme_participant_id", null: false
     t.integer "amount_cents", null: false
-    t.integer "fbo_funds_added_cents", null: false
     t.datetime "received_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -112,6 +111,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_26_034310) do
     t.index ["te_scheme_id"], name: "index_te_scheme_participants_on_te_scheme_id"
   end
 
+  create_table "te_scheme_withdrawals", force: :cascade do |t|
+    t.bigint "te_scheme_participant_id", null: false
+    t.bigint "fbo_account_transaction_id", null: false
+    t.integer "amount_cents", null: false
+    t.datetime "occured_at", null: false
+    t.string "reason", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fbo_account_transaction_id"], name: "index_te_scheme_withdrawals_on_fbo_account_transaction_id"
+    t.index ["te_scheme_participant_id"], name: "index_te_scheme_withdrawals_on_te_scheme_participant_id"
+  end
+
   create_table "te_schemes", force: :cascade do |t|
     t.string "name"
     t.bigint "fbo_account_id", null: false
@@ -130,5 +141,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_26_034310) do
   add_foreign_key "te_scheme_expenditures", "fbo_account_transactions"
   add_foreign_key "te_scheme_expenditures", "te_schemes"
   add_foreign_key "te_scheme_participants", "te_schemes"
+  add_foreign_key "te_scheme_withdrawals", "fbo_account_transactions"
+  add_foreign_key "te_scheme_withdrawals", "te_scheme_participants"
   add_foreign_key "te_schemes", "fbo_accounts"
 end

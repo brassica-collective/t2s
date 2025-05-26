@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post :assign, on: :member
       post :expend, on: :member
       post :withdraw, on: :member
+      get :new_withdrawal, on: :member
     end
   end
 

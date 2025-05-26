@@ -34,13 +34,10 @@
                 <% end %>
               <% end %>
             <% elsif transaction.money_out? %>
-              <% if !transaction.te_scheme_expenditure %>
+              <% if !transaction.reconciled? %>
                 <%= button_to "Expend", expend_fbo_account_transaction_path(@account, transaction), method: :post %>
                 <div>or</div>
-                <%= form_with url: withdraw_fbo_account_transaction_path(@account, transaction) do |form| %>
-                  <%= form.select('participant_id', options_from_collection_for_select(@scheme.participants, 'id', 'name', nil), include_blank: true)  %>
-                  <%= form.submit "Withdraw" %>
-                <% end %>
+                <%= link_to "Withdrawal", new_withdrawal_fbo_account_transaction_path(@account, transaction)  %>
               <% end %>
             <% end %>
           </td>

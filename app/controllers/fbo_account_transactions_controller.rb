@@ -1,6 +1,6 @@
 class FboAccountTransactionsController < ApplicationController
   before_action :load_fbo_account
-  before_action :load_transaction, only: [:assign, :expend]
+  before_action :load_transaction, only: [:assign, :expend, :new_withdrawal, :withdraw]
 
   def assign
     Te::IndividualContributionService.new.assign_fbo_transaction(@transaction, load_participant)
@@ -12,8 +12,16 @@ class FboAccountTransactionsController < ApplicationController
     reload_index
   end
 
+  def new_withdrawal
+    @scheme = @account.te_scheme
+  end
+
   def withdraw
-    Te::IndividualContributionService.new.withdraw_fbo_transaction(@transaction, load)
+    reason = params[:reason]
+    raise "Reason for withdrawal is required" if reason.blank?
+
+    Te::IndividualContributionService.new.withdraw_fbo_transaction(@transaction, load_participant, reason)
+    redirect_to fbo_account_transactions_path(@account), notice: "Withdrawal successfully created."
   end
 
   def index
